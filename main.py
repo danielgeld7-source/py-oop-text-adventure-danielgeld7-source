@@ -1,11 +1,14 @@
 from room import Room
 from item import Item
+from character import Chararcter
+
 
 kitchen = Room("kitchen ")
 kitchen.set_description("A dank and dirty room buzzing with flies. ")
 kitchen.get_description()
-
+dave = Character("Dave", "A smelly zombie")
 kitchen.describe()
+dave.describe()
 
 dinning_hall = Room("dining Hall ")
 dinning_hall.set_description("a large room with tables ")
@@ -19,7 +22,7 @@ dinning_hall.link_room(ballroom, "west")
 ballroom.link_room(dinning_hall, "east")
 cheese = Item("cheese", "A smelly block of cheddar.")
 kitchen.add_item(cheese)
-sword = Item("blood sword ", "a long dark nights blade with the taste of blood but still as sharp as ever")
+sword = Item("sword", "a long dark nights blade with the taste of blood but still as sharp as ever")
 dinning_hall.add_item(sword)
 current_room = kitchen 
 
@@ -34,7 +37,7 @@ while True:
             if item.name == item_name:
                 player_inventory.append(item)
                 current_room.items.remove(item)
-                print(f"You picked up the {item_name}!")
+                print(f"You pick up the {item.name}: {item.description}")
                 break
         else:
             print("That isn't here.")
