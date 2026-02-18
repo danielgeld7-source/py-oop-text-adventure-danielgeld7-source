@@ -5,6 +5,7 @@ class Room():
         self.linked_rooms = {}
         self.items = []
         self.all_items = []
+        self.character = None
          
        
     
@@ -17,7 +18,12 @@ class Room():
 
     def get_description(self):
         return self.description 
-    
+    def set_character(self, character):
+        """Sets the character in this room."""
+        self.character = character
+    def get_character(self):
+        """Returns the character in this room, if any."""
+        return self.character
     def describe(self): 
         print( self.description )
     
@@ -35,7 +41,6 @@ class Room():
     def get_description(self):
         return self.description
     
-    
     def get_details(self):
         """This single method handles everything the player needs to see."""
         print(f"\nYou are in the {self.name}")
@@ -48,7 +53,8 @@ class Room():
         for direction in self.linked_rooms:
             room = self.linked_rooms[direction]
             print(f"The {room.name} is to the {direction}")
-        
+        if self.character is not None:
+            print(f"There is a {self.character.name} here.")
     
     def remove_item(self, item_name):
         for item in self.items:
